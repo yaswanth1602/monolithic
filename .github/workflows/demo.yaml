@@ -26,21 +26,21 @@ jobs:
       - name: Test
         run: echo "Testing is done..."
 
-      - name: Run SonarQube analysis
-        run: |
-          mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-            -Dsonar.projectKey=demo \
-            -Dsonar.projectName='demo' \
-            -Dsonar.host.url=http://54.82.67.126:9000 \
-            -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-        working-directory: myfolder
-
-      #- name: Run SonarQube analysis (with Quality Gate) 
-      #  run: | 
-      #    mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \ 
-      #    -Dsonar.projectKey=demo \ 
-      #    -Dsonar.projectName=demo \ 
-      #    -Dsonar.host.url=http://54.82.67.126:9000 \ 
-      #    -Dsonar.token=${{ secrets.SONAR_TOKEN }} \ 
-      #    -Dsonar.qualitygate.wait=true 
+      #- name: Run SonarQube analysis
+      #  run: |
+      #    mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+      #      -Dsonar.projectKey=demo \
+      #      -Dsonar.projectName='demo' \
+      #      -Dsonar.host.url=http://54.82.67.126:9000 \
+      #      -Dsonar.token=${{ secrets.SONAR_TOKEN }}
       #  working-directory: myfolder
+
+      - name: Run SonarQube analysis (with Quality Gate) 
+        run: | 
+          mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \ 
+          -Dsonar.projectKey=demo \ 
+          -Dsonar.projectName=demo \ 
+          -Dsonar.host.url=http://54.82.67.126:9000 \ 
+          -Dsonar.token=${{ secrets.SONAR_TOKEN }} \ 
+          -Dsonar.qualitygate.wait=true 
+        working-directory: myfolder
