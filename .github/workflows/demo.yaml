@@ -3,7 +3,7 @@ name: sonardemo
 on:
   push:
     paths:
-      - 'venkat_retail/**'
+      - 'myfolder/**'
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install -DskipTests
-        working-directory: venkat_retail
+        working-directory: myfolder
 
       - name: Test
         run: echo "Testing is done..."
@@ -33,4 +33,4 @@ jobs:
             -Dsonar.projectName='demo' \
             -Dsonar.host.url=http://98.94.95.181:9000 \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
-        working-directory: venkat_retail
+        working-directory: myfolder
